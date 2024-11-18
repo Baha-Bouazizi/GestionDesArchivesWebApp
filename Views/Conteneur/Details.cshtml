@@ -1,0 +1,119 @@
+﻿@model GestionDesArchivesWebApp.Models.ConteneurDetailsViewModel
+
+<div class="container mt-5">
+    <h2 class="mb-4">Détails du Conteneur</h2>
+
+    <!-- Conteneur Details Card -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Détails du Conteneur</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3 font-weight-bold">Code Conteneur</dt>
+                <dd class="col-sm-9">@Model.Conteneur.CdeCon</dd>
+
+                <dt class="col-sm-3 font-weight-bold">Description</dt>
+                <dd class="col-sm-9">@Model.Conteneur.DesCon</dd>
+
+                <dt class="col-sm-3 font-weight-bold">Date de Début</dt>
+                <dd class="col-sm-9">@Model.Conteneur.SutDeb.ToString("dd/MM/yyyy")</dd>
+
+                <dt class="col-sm-3 font-weight-bold">Date de Fin</dt>
+                <dd class="col-sm-9">@Model.Conteneur.SutFin.ToString("dd/MM/yyyy")</dd>
+
+                <dt class="col-sm-3 font-weight-bold">Durée de Vie</dt>
+                <dd class="col-sm-9">@Model.Conteneur.DurVieCon</dd>
+
+                <dt class="col-sm-3 font-weight-bold">Code Personne</dt>
+                <dd class="col-sm-9">@Model.Conteneur.CdePer</dd>
+
+                <dt class="col-sm-3 font-weight-bold">Code Emplacement</dt>
+                <dd class="col-sm-9">@Model.Conteneur.CdeEmpl</dd>
+
+                <dt class="col-sm-3 font-weight-bold">Code Type Classification</dt>
+                <dd class="col-sm-9">@Model.Conteneur.CdeTypClass</dd>
+
+                <dt class="col-sm-3 font-weight-bold">Code Supplémentaire</dt>
+                <dd class="col-sm-9">@Model.Conteneur.CdeSup</dd>
+
+                <dt class="col-sm-3 font-weight-bold">Code Standard</dt>
+                <dd class="col-sm-9">@Model.Conteneur.CdeStd</dd>
+
+                <dt class="col-sm-3 font-weight-bold">Code Société</dt>
+                <dd class="col-sm-9">@Model.Conteneur.CdeSoc</dd>
+
+                <dt class="col-sm-3 font-weight-bold">Archiver</dt>
+                <dd class="col-sm-9">@Model.Conteneur.Archiver ? "Oui" : "Non"</dd>
+
+                <dt class="col-sm-3 font-weight-bold">Disponible ADX</dt>
+                <dd class="col-sm-9">@Model.Conteneur.DispoAdx ? "Oui" : "Non"</dd>
+            </dl>
+        </div>
+    </div>
+
+    <!-- Contenus Card -->
+    <div class="card">
+        <div class="card-header bg-secondary text-white">
+            <h3 class="mb-0">Contenus</h3>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                @foreach (var contenu in Model.Contenus)
+                {
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <strong>@contenu.NPiece</strong> - @contenu.DesPiece
+                            </div>
+                            <div>
+                                <a href="@Url.Action("ContenuDetails", "Conteneur", new { id = contenu.CdePiece })" class="btn btn-info btn-sm">
+                                    <i class="fas fa-info-circle"></i> Détails
+                                </a>
+
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card-header {
+        font-size: 1.25rem;
+        text-transform: uppercase;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .card-body {
+        font-size: 1rem;
+    }
+
+    .list-group-item {
+        font-size: 1rem;
+        padding: 15px;
+        border-radius: 0.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+        .list-group-item:hover {
+            background-color: #f8f9fa;
+            cursor: pointer;
+        }
+
+    dt {
+        font-weight: bold;
+    }
+
+    dd {
+        margin-bottom: 1rem;
+    }
+
+    .btn-sm {
+        font-size: 0.875rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.2rem;
+    }
+</style>

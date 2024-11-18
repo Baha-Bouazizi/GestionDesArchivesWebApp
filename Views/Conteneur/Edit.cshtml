@@ -1,0 +1,101 @@
+﻿@model GestionDesArchivesWebApp.Models.Conteneur
+
+@{
+    ViewData["Title"] = "Edit Conteneur";
+}
+
+<h1>Edit Conteneur</h1>
+
+<h4>Conteneur</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit" method="post">
+            <div class="form-group">
+                <label asp-for="CdeCon" class="control-label"></label>
+                <input asp-for="CdeCon" class="form-control" readonly />
+                <span asp-validation-for="CdeCon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DesCon" class="control-label"></label>
+                <input asp-for="DesCon" class="form-control" />
+                <span asp-validation-for="DesCon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SutDeb" class="control-label"></label>
+                <input asp-for="SutDeb" class="form-control" type="date" />
+                <span asp-validation-for="SutDeb" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SutFin" class="control-label"></label>
+                <input asp-for="SutFin" class="form-control" type="date" />
+                <span asp-validation-for="SutFin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DurVieCon" class="control-label"></label>
+                <input asp-for="DurVieCon" class="form-control" />
+                <span asp-validation-for="DurVieCon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CdePer" class="control-label"></label>
+                <input asp-for="CdePer" class="form-control" />
+                <span asp-validation-for="CdePer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CdeEmpl" class="control-label"></label>
+                <select asp-for="CdeEmpl" class="form-control" asp-items="ViewBag.CdeEmpl"></select>
+                <span asp-validation-for="CdeEmpl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CdeTypClass" class="control-label"></label>
+                <select asp-for="CdeTypClass" class="form-control" asp-items="ViewBag.TypeClassementOptions"></select>
+                <span asp-validation-for="CdeTypClass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CdeSup" class="control-label"></label>
+                <select asp-for="CdeSup" class="form-control" asp-items="ViewBag.SupportOptions"></select>
+                <span asp-validation-for="CdeSup" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CdeStd" class="control-label"></label>
+                <select asp-for="CdeStd" class="form-control" asp-items="ViewBag.StadeClassementOptions"></select>
+                <span asp-validation-for="CdeStd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CdeSoc" class="control-label"></label>
+                <select asp-for="CdeSoc" class="form-control" asp-items="ViewBag.SocieteOptions"></select>
+                <span asp-validation-for="CdeSoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Archiver" class="control-label"></label>
+                <input asp-for="Archiver" type="checkbox" />
+                <span asp-validation-for="Archiver" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DispoAdx" class="control-label"></label>
+                <input asp-for="DispoAdx" class="form-control" />
+                <span asp-validation-for="DispoAdx" class="text-danger"></span>
+            </div>
+
+            <!-- Les champs suiteD et suiteF semblent être des ajouts récents. Assurez-vous qu'ils sont correctement définis dans le modèle -->
+            <div class="form-group">
+                <label asp-for="suiteD" class="control-label"></label>
+                <input asp-for="suiteD" class="form-control" />
+                <span asp-validation-for="suiteD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="suiteF" class="control-label"></label>
+                <input asp-for="suiteF" class="form-control" />
+                <span asp-validation-for="suiteF" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

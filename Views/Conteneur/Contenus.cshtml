@@ -1,0 +1,47 @@
+﻿@model IEnumerable<GestionDesArchivesWebApp.Models.Contenu>
+@{
+    var cdeCon = ViewData["CdeCon"] as string;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Contenus</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Liste des Contenus pour le Conteneur @cdeCon</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().CdePiece)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().NPiece)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().DesPiece)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().DtePiece)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().MotCle)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().CdeTypDoc)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.CdePiece)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NPiece)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DesPiece)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DtePiece)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MotCle)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CdeTypDoc)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <p>
+            <a asp-action="Details" asp-route-id="@cdeCon" class="btn btn-secondary">Retour</a>
+        </p>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

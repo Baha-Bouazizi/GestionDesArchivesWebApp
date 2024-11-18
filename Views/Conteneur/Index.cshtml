@@ -1,0 +1,255 @@
+﻿@model IEnumerable<GestionDesArchivesWebApp.Models.Conteneur>
+
+@{
+    ViewData["Title"] = "Conteneurs Index";
+}
+
+<div class="container mt-5">
+    <!-- Title Section -->
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h1 class="display-6 archive-title">
+                <i class="fas fa-archive"></i> Gestion des Conteneurs
+            </h1>
+            <p class="lead text-muted">Organisez, gérez et archivez vos conteneurs efficacement.</p>
+        </div>
+    </div>
+
+    <!-- Create New Button -->
+    <div class="row mb-3">
+        <div class="col text-right">
+            <a asp-action="Create" class="btn btn-primary btn-sm shadow-sm">
+                <i class="fas fa-plus-circle"></i> Nouveau Conteneur
+            </a>
+        </div>
+    </div>
+
+    <!-- Search Form -->
+   <!-- Search Form -->
+    <!-- Search Form -->
+    <!-- Search Form -->
+    <!-- Search Form -->
+    <!-- Search Form -->
+   <!-- Search Form -->
+   <div class="row mb-4">
+    <div class="col">
+        <form asp-action="Index" method="get" class="form-horizontal">
+            <!-- Date Range Section -->
+            <div class="form-group row align-items-center">
+                <label for="startDate" class="col-sm-2 col-form-label text-secondary">Date début</label>
+                <div class="col-sm-4">
+                    <input type="date" class="form-control form-control-sm shadow-sm" id="startDate" name="startDate" />
+                </div>
+                <label for="endDate" class="col-sm-2 col-form-label text-secondary">Date fin</label>
+                <div class="col-sm-4">
+                    <input type="date" class="form-control form-control-sm shadow-sm" id="endDate" name="endDate" />
+                </div>
+            </div>
+
+            <!-- Container Codes Section -->
+            <div class="form-group row align-items-center">
+                <label for="cdeCon" class="col-sm-2 col-form-label text-secondary">Code Conteneur</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control form-control-sm shadow-sm" id="cdeCon" placeholder="Code Conteneur" name="cdeCon" />
+                </div>
+                <label for="desCon" class="col-sm-2 col-form-label text-secondary">Description</label>
+                <div class="col-sm-4">
+                    <select class="form-control form-control-sm shadow-sm" id="desCon" name="desCon">
+                        <option value="">-- Sélectionner une description --</option>
+                        @foreach (var item in ViewBag.DesConOptions as List<string>)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <!-- Additional Fields -->
+            <div class="form-group row align-items-center">
+                    <label for="NomPrePer" class="col-sm-2 col-form-label text-secondary">Code Per</label>
+                <div class="col-sm-4">
+                        <select class="form-control form-control-sm shadow-sm" id="NomPrePer" name="NomPrePer">
+                        <option value="">-- Sélectionner un Per --</option>
+                        @foreach (var item in ViewBag.CodePerOptions as List<string>)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+                    <label for="DesTypClass" class="col-sm-2 col-form-label text-secondary">Type de Classification</label>
+                <div class="col-sm-4">
+                        <select class="form-control form-control-sm shadow-sm" id="DesTypClass" name="DesTypClass">
+                        <option value="">-- Sélectionner un type de classification --</option>
+                        @foreach (var item in ViewBag.CodeTypClassOptions as List<string>)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                    <label for="DesSupp" class="col-sm-2 col-form-label text-secondary">Code Sup</label>
+                <div class="col-sm-4">
+                        <select class="form-control form-control-sm shadow-sm" id="DesSupp" name="DesSupp">
+                        <option value="">-- Sélectionner un Support --</option>
+                        @foreach (var item in ViewBag.CodeSupOptions as List<string>)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+                    <label for="DesStd" class="col-sm-2 col-form-label text-secondary">Code</label>
+                <div class="col-sm-4">
+                        <select class="form-control form-control-sm shadow-sm" id="DesStd" name="DesStd">
+                        <option value="">-- Sélectionner un stase classement --</option>
+                        @foreach (var item in ViewBag.CodeStdOptions as List<string>)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label for="DesSoc" class="col-sm-2 col-form-label text-secondary">Société</label>
+                <div class="col-sm-4">
+                    <select class="form-control form-control-sm shadow-sm" id="DesSoc" name="DesSoc">
+                        <option value="">-- Sélectionner une société --</option>
+                        @foreach (var item in ViewBag.Societes as List<string>)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+                <label for="desEmpl" class="col-sm-2 col-form-label text-secondary">Emplacement</label>
+                <div class="col-sm-4">
+                    <select class="form-control form-control-sm shadow-sm" id="desEmpl" name="desEmpl">
+                        <option value="">-- Sélectionner un emplacement --</option>
+                        @foreach (var item in ViewBag.Emplacements as List<string>)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <!-- Search Button -->
+            <div class="form-group row">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-primary btn-sm shadow-sm">
+                        <i class="fas fa-search"></i> Rechercher
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+    <!-- Conteneurs Table -->
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover table-bordered table-sm shadow-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                        <th>Date Début</th>
+                        <th>Date Fin</th>
+                        <th>Durée Vie</th>
+                        <th>Personnel</th>
+                        <th>SuiteDebuit</th>
+                        <th>SyuiteFin</th>
+                        <!-- ... other columns ... -->
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.CdeCon)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DesCon)</td>
+                            <td>@Html.DisplayFor(modelItem => item.SutDeb)</td>
+                            <td>@Html.DisplayFor(modelItem => item.SutFin)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DurVieCon)</td>
+                            <td>@Html.DisplayFor(modelItem => item.CdePer)</td>
+                            <td>@Html.DisplayFor(modelItem => item.suiteD)</td>
+                            <td>@Html.DisplayFor(modelItem => item.suiteF)</td>
+                         
+                            <!-- ... other fields ... -->
+                            <td>
+                                <a asp-action="Details" asp-route-id="@item.CdeCon" class="btn btn-outline-info btn-sm shadow-sm" title="Détails">
+                                    <img src="@Url.Content("~/images/details.png")" alt="Details" />
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@item.CdeCon" class="btn btn-outline-warning btn-sm shadow-sm" title="Modifier">
+                                    <img src="@Url.Content("~/images/edit.png")" alt="Edit" />
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.CdeCon" class="btn btn-outline-danger btn-sm shadow-sm" title="Supprimer">
+                                    <img src="@Url.Content("~/images/supprimer.png")" alt="Delete" />
+                                </a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    .archive-title {
+        font-family: 'Merriweather', serif;
+        color: #2c3e50;
+        text-transform: uppercase;
+        font-size: 2rem;
+    }
+
+    .table th, .table td {
+        padding: 12px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table th {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+    .btn {
+        transition: all 0.3s ease;
+    }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+    .form-control-sm {
+        font-size: 0.95rem;
+        padding: 0.5rem;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .thead-dark th {
+        background-color: #2c3e50;
+    }
+
+    .btn-sm img {
+        width: 20px;
+        height: 20px;
+    }
+</style>

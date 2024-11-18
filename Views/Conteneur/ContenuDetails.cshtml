@@ -1,0 +1,56 @@
+﻿@model GestionDesArchivesWebApp.Models.Contenu
+
+<div class="container mt-5">
+    <h2 class="mb-4">Détails du Contenu</h2>
+
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Détails du Contenu</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3 font-weight-bold">
+                    <i class="fas fa-id-card"></i> Code Pièce
+                </dt>
+                <dd class="col-sm-9">@Model.CdePiece</dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    <i class="fas fa-file-alt"></i> Nom de Pièce
+                </dt>
+                <dd class="col-sm-9">@Model.NPiece</dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    <i class="fas fa-pencil-alt"></i> Description
+                </dt>
+                <dd class="col-sm-9">@Model.DesPiece</dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    <i class="fas fa-calendar-day"></i> Date de Pièce
+                </dt>
+                <dd class="col-sm-9">@Model.DtePiece?.ToString("dd/MM/yyyy")</dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    <i class="fas fa-tags"></i> Mot Clé
+                </dt>
+                <dd class="col-sm-9">@Model.MotCle</dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    <i class="fas fa-box"></i> Code Conteneur
+                </dt>
+                <dd class="col-sm-9">@Model.CdeCon</dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    <i class="fas fa-file"></i> Code Type Document
+                </dt>
+                <dd class="col-sm-9">@Model.CdeTypDoc</dd>
+
+                <!-- Ajoutez d'autres détails selon les propriétés du modèle -->
+            </dl>
+        </div>
+    </div>
+
+    <!-- Ajoutez un bouton pour retourner à la liste ou à la page précédente -->
+    <a href="@Url.Action("Index", "Conteneur")" class="btn btn-primary">
+        <i class="fas fa-arrow-left"></i> Retour à la Liste
+    </a>
+</div>
